@@ -56,9 +56,21 @@ that must fail the threshold. Measured on the evaluated system: aligned
 ## Architecture-dependent claims
 
 Reference values for **G5** and **G8** were recorded on aarch64. llama.cpp
-selects different SIMD kernels per architecture, so byte-identical decode across
-architectures is untested; both gates skip on non-aarch64 hosts and say so. The
-latency figures reported in the paper are Raspberry Pi 5 measurements.
+selects different SIMD kernels per architecture. Decode is **not** byte-identical
+across architectures: the same prompts at temperatures 0.2, 0.4 and 0.6 produced
+different output on x86-64 than the aarch64 reference in every case. Both gates
+therefore skip on a non-aarch64 host and say why. The latency figures reported in
+the paper are Raspberry Pi 5 measurements.
+
+What does hold across architectures, measured on both aarch64 (Raspberry Pi 5)
+and x86-64 (Debian under WSL 2):
+
+| | result |
+|---|---|
+| Embedding alignment (G2) | identical, worst 1.000000 on both |
+| Index integrity (G4) | identical, 2,028,337 after a Hugging Face round trip |
+| Artifact hashes | all objects verified by SHA-256 on both |
+| Decode (G8) | **differs** |
 
 Retrieval is not architecture-dependent. G2 was run on both aarch64 (Raspberry
 Pi 5) and x86-64 (Debian under WSL 2) against the same 1,000-passage fixture and
