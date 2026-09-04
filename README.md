@@ -58,8 +58,17 @@ that must fail the threshold. Measured on the evaluated system: aligned
 Reference values for **G5** and **G8** were recorded on aarch64. llama.cpp
 selects different SIMD kernels per architecture, so byte-identical decode across
 architectures is untested; both gates skip on non-aarch64 hosts and say so. The
-latency figures reported in the paper are Raspberry Pi 5 measurements. Accuracy
-results do not depend on the host architecture.
+latency figures reported in the paper are Raspberry Pi 5 measurements.
+
+Retrieval is not architecture-dependent. G2 was run on both aarch64 (Raspberry
+Pi 5) and x86-64 (Debian under WSL 2) against the same 1,000-passage fixture and
+returned identical values to six decimal places on both: worst 1.000000, mean
+1.000000, random-pair floor 0.4094. The embedding path therefore produces the
+same query vectors on either architecture.
+
+The mismatch control inside G2 needs `fastembed`, which is a development
+dependency and is not in `requirements-frozen.txt`. Without it the control
+reports as unavailable and the gate still passes on its primary measurement.
 
 ## Layout
 
