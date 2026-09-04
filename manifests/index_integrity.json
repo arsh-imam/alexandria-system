@@ -1,0 +1,28 @@
+{
+  "annoy_dims": 384,
+  "annoy_items": 2028337,
+  "annoy_metric": "angular",
+  "join_consistent": true,
+  "npy_size_actual": 3115525760,
+  "npy_size_expected": 3115525760,
+  "npy_size_matches": true,
+  "passages_db_id_max": 2028336,
+  "passages_db_id_min": 0,
+  "passages_db_rows": 2028337,
+  "passages_fts_rows": 2028337,
+  "passages_jsonl_lines": 2028337,
+  "per_source": {
+    "ifixit": 271765,
+    "wikibooks": 323529,
+    "wikinews": 41412,
+    "wikipedia": 1099364,
+    "wikiquote": 115721,
+    "wikivoyage": 136546,
+    "wiktionary": 40000
+  },
+  "vectors_dtype": "float32",
+  "vectors_shape": [
+    2028337,
+    384
+  ]
+}

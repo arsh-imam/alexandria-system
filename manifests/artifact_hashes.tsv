@@ -1,0 +1,11 @@
+sha256	size_bytes	group	path
+b139949c5bd74937ad8ed8c8cf3d9ffb1e99c866c823204dc42c0d91fa181897	1107409472	llm	/media/pi/KINGSTON/local_ai/models/Qwen3-1.7B-Q4_K_M.gguf
+828e1496d7fabb79cfa4dcd84fa38625c0d3d21da474a00f08db0f559940cf35	133093490	embedder	/media/pi/KINGSTON/local_ai/models/embed/model.onnx
+d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66	711396	embedder	/media/pi/KINGSTON/local_ai/models/embed/tokenizer.json
+e9d8ebf845c413e981c175bfe49a3bfa9b3dcce2a3ba54875ee5df5a58639fbe	23143499	reranker	/media/pi/KINGSTON/local_ai/models/rerank/model_quantized.onnx
+d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66	711396	reranker	/media/pi/KINGSTON/local_ai/models/rerank/tokenizer.json
+f4ecc3afbc38902e9ae7422525ba9bd0ab168ea4aa99759b4228fd5c5b79e653	4708573	index	/media/pi/KINGSTON/local_ai/index/top_200k_titles.txt
+(not hashed: rerun with --hash-big)	2040717002	index	/media/pi/KINGSTON/local_ai/index/passages.jsonl
+(not hashed: rerun with --hash-big)	3115525760	index	/media/pi/KINGSTON/local_ai/index/vectors.npy
+(not hashed: rerun with --hash-big)	4574920500	index	/media/pi/KINGSTON/local_ai/index/passages.ann
+(not hashed: rerun with --hash-big)	3538796544	index	/media/pi/KINGSTON/local_ai/index/passages.db

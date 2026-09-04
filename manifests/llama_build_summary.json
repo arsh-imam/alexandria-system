@@ -1,0 +1,10 @@
+{
+  "llama_cpp_python": "0.3.23",
+  "cpu_repack_active": true,
+  "repack_kernels": [
+    "q4_K_8x4",
+    "q6_K_8x4"
+  ],
+  "gguf": "Qwen3-1.7B-Q4_K_M.gguf",
+  "note": "CPU_REPACK indicates aarch64-optimised kernels. A build without it runs the same maths far more slowly; any throughput comparison must confirm this flag."
+}

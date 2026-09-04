@@ -1,0 +1,30 @@
+# runtime host
+python           3.13.5  (3.13.5 (main, May  5 2026, 21:05:52) [GCC 14.2.0])
+platform         Linux-6.18.29+rpt-rpi-2712-aarch64-with-glibc2.41
+machine          aarch64
+processor        
+
+$ uname -a
+Linux alexandria-pi 6.18.29+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.18.29-1+rpt1 (2026-05-12) aarch64 GNU/Linux
+
+$ grep PRETTY_NAME /etc/os-release
+PRETTY_NAME="Debian GNU/Linux 13 (trixie)"
+
+$ free -h
+total        used        free      shared  buff/cache   available
+Mem:           7.9Gi       2.5Gi       1.0Gi       254Mi       4.7Gi       5.3Gi
+Swap:          2.0Gi       569Mi       1.4Gi
+
+$ swapon --show
+NAME       TYPE      SIZE   USED PRIO
+/dev/zram0 partition   2G 569.5M  100
+
+$ findmnt -o SOURCE,TARGET,FSTYPE,OPTIONS /media/pi/KINGSTON
+SOURCE    TARGET             FSTYPE OPTIONS
+/dev/sda1 /media/pi/KINGSTON exfat  rw,nosuid,nodev,relatime,uid=1000,gid=1000,fmask=0022,dmask=0022,iocharset=utf8,errors=remount-ro
+
+$ nproc
+4
+
+$ cat /sys/firmware/devicetree/base/model
+Raspberry Pi 5 Model B Rev 1.1

@@ -1,0 +1,33 @@
+{
+  "llama_cpp_python": "0.3.23",
+  "gguf": "Qwen3-1.7B-Q4_K_M.gguf",
+  "note": "llama-cpp-python passes LLAMA_DEFAULT_SEED (0xffffffff) through as a fixed seed rather than drawing randomly, so decode is byte-reproducible at every deployed temperature. Verified: explicit seeds DO change output, the default does not. This is version-dependent.",
+  "top_p": 0.9,
+  "repeat_penalty": 1.1,
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_batch": 512,
+  "cases": [
+    {
+      "prompt": "Write an original four-line poem about a lighthouse keeper who has never once seen a ship. Do not rhyme.",
+      "temperature": 0.2,
+      "max_tokens": 160,
+      "sha256": "adb8d134cf88e958d2b1fa0bb4c241cbc604d56ee3694fada842a2263156d776",
+      "text": "<think>\n\n</think>\n\nThe wind howls through the stone and sea,  \nA silence deep in the harbor's keep.  \nNo sails are seen, no voices near,  \nJust stars above and the moon's soft light."
+    },
+    {
+      "prompt": "Write an original four-line poem about a lighthouse keeper who has never once seen a ship. Do not rhyme.",
+      "temperature": 0.4,
+      "max_tokens": 160,
+      "sha256": "bf61bb7f41e6d6f907a54ca9541b6de2c316ab2935b08c669758974f9822c8c6",
+      "text": "<think>\n\n</think>\n\nThe waves whisper through the cold, unbroken stone  \nA life bound to the silence of the sea  \nHe watches night and day without a light  \nAnd never sees a ship in all his time."
+    },
+    {
+      "prompt": "Write an original four-line poem about a lighthouse keeper who has never once seen a ship. Do not rhyme.",
+      "temperature": 0.6,
+      "max_tokens": 160,
+      "sha256": "5b5597f9eaf215ce0ec27362fe5fbbd4c41007a4bf7097cdae5450b6621b379c",
+      "text": "<think>\n\n</think>\n\nThe moonlight lingers on the stone,  \nA silence deep in the tower's tone.  \nNo sails break the darkened sea,  \nAnd no ship ever comes to be."
+    }
+  ]
+}

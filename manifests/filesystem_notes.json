@@ -1,0 +1,9 @@
+{
+  "mount": "exFAT, 512 KiB clusters (directory entries report 524288 B)",
+  "sessions_file_count": 5229,
+  "sessions_min_allocation_bytes": 2741501952,
+  "sessions_note": "size on disk is dominated by cluster rounding, not JSON volume; list_sessions() parses every file",
+  "queries_jsonl_lines": 8455,
+  "hardcoded_root": "/media/pi/KINGSTON/local_ai",
+  "path_note": "all runtime paths are absolute; a host without this exact path needs a bind mount, not a code edit"
+}

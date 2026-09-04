@@ -1,0 +1,5 @@
+gate	title	status	detail	seconds
+G0	repo integrity	PASS	12 modules byte-identical to manifest	0.0
+G1	environment	PASS	6/6 critical pins match, 35 total in lock	0.1
+G2	embedding alignment (self_cos >= 0.98)	PASS	n=1000 worst=1.000000 mean=1.000000 below_0.98=0 (<0.999: 0, <0.9999: 0) | random-pair control mean=0.4094 max=0.7161 | mismatch control (bare fastembed, n=128): worst=0.7671 mean=0.8648 -> correctly FAILS 0.98	155.6
+G3	chunking parameters	PASS	36 articles / 149 passages: 160w windows, 40w overlap, caps respected	0.0

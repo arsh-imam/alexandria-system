@@ -1,0 +1,415 @@
+{
+  "k": 3,
+  "generated": "2026-09-04",
+  "note": "retrieval has no sampling; only Annoy's approximate neighbours can vary, and only if the .ann was rebuilt",
+  "cases": [
+    {
+      "query": "how do I fix a leaking kitchen tap",
+      "titles": [
+        "Franke Ascona kitchen tap dripping with intermittent flow",
+        "Faucet",
+        "How to fix water leaking from the side of the capsules"
+      ],
+      "sources": [
+        "diy SE (community Q&A)",
+        "ifixit",
+        "ifixit"
+      ],
+      "logits": [
+        5.14,
+        3.61,
+        3.42
+      ],
+      "tiers": [
+        2,
+        1,
+        1
+      ],
+      "origins": [
+        "deep:diy",
+        "bm25",
+        "vector"
+      ],
+      "confidence": 0.994,
+      "text_sha256": [
+        "90f9fb3ed09f1318",
+        "0e534a38d4ed167f",
+        "58017cf542ab12a8"
+      ]
+    },
+    {
+      "query": "what causes the northern lights",
+      "titles": [
+        "What? Northern lights are *not* simply caused by energetic charged particles from the sun?",
+        "Northern Lights",
+        "Aurora Borealis caused by electrical space tornadoes"
+      ],
+      "sources": [
+        "earth science SE (community Q&A)",
+        "wikivoyage",
+        "wikinews"
+      ],
+      "logits": [
+        8.2,
+        7.47,
+        6.88
+      ],
+      "tiers": [
+        2,
+        1,
+        1
+      ],
+      "origins": [
+        "deep:earthscience",
+        "bm25",
+        "bm25"
+      ],
+      "confidence": 1.0,
+      "text_sha256": [
+        "03ec2678bd7b67a8",
+        "e322fa6c2ef5dbad",
+        "fc8c8615c72cc0bd"
+      ]
+    },
+    {
+      "query": "does drinking coffee dehydrate you",
+      "titles": [
+        "Dehydration",
+        "Dehydration",
+        "Healthy eating habits/Eat to Succeed: A Guide to Healthy Eating During Exams"
+      ],
+      "sources": [
+        "wikivoyage",
+        "wikivoyage",
+        "wikibooks"
+      ],
+      "logits": [
+        3.39,
+        2.92,
+        2.62
+      ],
+      "tiers": [
+        1,
+        1,
+        1
+      ],
+      "origins": [
+        "bm25",
+        "bm25",
+        "vector"
+      ],
+      "confidence": 0.967,
+      "text_sha256": [
+        "41183db01b42477b",
+        "2a0e771b48301816",
+        "a66bfa836d77477b"
+      ]
+    },
+    {
+      "query": "explain the Krebs cycle",
+      "titles": [
+        "Citric acid cycle",
+        "Principles of Biochemistry/Krebs cycle or Citric acid cycle",
+        "Structural Biochemistry/Krebs Cycle (Citric Acid cycle)"
+      ],
+      "sources": [
+        "wikipedia",
+        "wikibooks",
+        "wikibooks"
+      ],
+      "logits": [
+        7.64,
+        7.17,
+        7.11
+      ],
+      "tiers": [
+        1,
+        1,
+        1
+      ],
+      "origins": [
+        "bm25",
+        "title",
+        "title"
+      ],
+      "confidence": 1.0,
+      "text_sha256": [
+        "5810415aa20cb8a0",
+        "74ec723b9f435beb",
+        "953e870d2ddcce12"
+      ]
+    },
+    {
+      "query": "best time to visit Kyoto",
+      "titles": [
+        "Saihō-ji (Kyoto)",
+        "Sorry (2002 film)",
+        "Kyoto/Central"
+      ],
+      "sources": [
+        "wikipedia (deep)",
+        "wikipedia (deep)",
+        "wikivoyage"
+      ],
+      "logits": [
+        7.2,
+        1.04,
+        0.9
+      ],
+      "tiers": [
+        2,
+        2,
+        1
+      ],
+      "origins": [
+        "deep:wikipedia",
+        "deep:wikipedia",
+        "vector"
+      ],
+      "confidence": 0.999,
+      "text_sha256": [
+        "14e9804b6fffeba6",
+        "a66618754ef49794",
+        "02e1a28e94e4cb15"
+      ]
+    },
+    {
+      "query": "how to season a cast iron pan",
+      "titles": [
+        "How to Restore and Season a Cast Iron Pan",
+        "How to Restore and Season a Cast Iron Pan",
+        "Restoring Cast Iron Cookware"
+      ],
+      "sources": [
+        "ifixit",
+        "ifixit",
+        "ifixit"
+      ],
+      "logits": [
+        9.38,
+        9.24,
+        6.67
+      ],
+      "tiers": [
+        1,
+        1,
+        1
+      ],
+      "origins": [
+        "title",
+        "title",
+        "bm25"
+      ],
+      "confidence": 1.0,
+      "text_sha256": [
+        "922dfc2a917294ca",
+        "71243772b75ce5a5",
+        "5d58dc39a7786f2e"
+      ]
+    },
+    {
+      "query": "what is compound interest",
+      "titles": [
+        "Compound interest",
+        "Compound interest",
+        "Interest"
+      ],
+      "sources": [
+        "wikiquote",
+        "wikipedia",
+        "wikipedia"
+      ],
+      "logits": [
+        10.6,
+        10.02,
+        9.28
+      ],
+      "tiers": [
+        1,
+        1,
+        1
+      ],
+      "origins": [
+        "title",
+        "title",
+        "bm25"
+      ],
+      "confidence": 1.0,
+      "text_sha256": [
+        "62bc490892c2631b",
+        "f910f29856085ee0",
+        "d73667e203e97695"
+      ]
+    },
+    {
+      "query": "symptoms of vitamin D deficiency",
+      "titles": [
+        "Vitamin D deficiency",
+        "Vitamin D deficiency",
+        "Vitamin deficiency"
+      ],
+      "sources": [
+        "wikipedia",
+        "wikipedia (deep)",
+        "wikipedia (deep)"
+      ],
+      "logits": [
+        7.21,
+        6.51,
+        4.05
+      ],
+      "tiers": [
+        1,
+        2,
+        2
+      ],
+      "origins": [
+        "title",
+        "deep:wikipedia",
+        "deep:wikipedia"
+      ],
+      "confidence": 0.999,
+      "text_sha256": [
+        "a593f1349ab56ddf",
+        "2e067d0fc2276fcb",
+        "4887d170c2a4b306"
+      ]
+    },
+    {
+      "query": "why did the Roman Republic fall",
+      "titles": [
+        "Roman Republic",
+        "Ancient History/Rome",
+        "Crisis of the Roman Republic"
+      ],
+      "sources": [
+        "wikipedia (deep)",
+        "wikibooks",
+        "wikipedia"
+      ],
+      "logits": [
+        7.54,
+        7.53,
+        7.14
+      ],
+      "tiers": [
+        2,
+        1,
+        1
+      ],
+      "origins": [
+        "deep:wikipedia",
+        "bm25",
+        "bm25"
+      ],
+      "confidence": 0.999,
+      "text_sha256": [
+        "ae4b97dd5ddf656f",
+        "922a38b7b438da99",
+        "06118bd4006a0723"
+      ]
+    },
+    {
+      "query": "how does a heat pump work",
+      "titles": [
+        "Heat pump",
+        "Heat pump",
+        "Geothermal Heating and Cooling/Ground source Heat Pumps"
+      ],
+      "sources": [
+        "wikipedia (deep)",
+        "wikipedia",
+        "wikibooks"
+      ],
+      "logits": [
+        9.33,
+        8.55,
+        7.86
+      ],
+      "tiers": [
+        2,
+        1,
+        1
+      ],
+      "origins": [
+        "deep:wikipedia",
+        "vector",
+        "title"
+      ],
+      "confidence": 1.0,
+      "text_sha256": [
+        "17e606edcd110fd0",
+        "1fe36cc3e193cf81",
+        "2027d1525c686796"
+      ]
+    },
+    {
+      "query": "what is the difference between RAM and ROM",
+      "titles": [
+        "Read-only memory",
+        "A-level Computing 2009/AQA/Computer Components, The Stored Program Concept and the Internet/Machine Level Architecture/Internal and external hardware components of a computer",
+        "A-level Computing/AQA/Computer Components, The Stored Program Concept and the Internet/Machine Level Architecture/Internal and external hardware components of a computer"
+      ],
+      "sources": [
+        "wikipedia (deep)",
+        "wikibooks",
+        "wikibooks"
+      ],
+      "logits": [
+        7.34,
+        6.88,
+        6.65
+      ],
+      "tiers": [
+        2,
+        1,
+        1
+      ],
+      "origins": [
+        "deep:wikipedia",
+        "bm25",
+        "bm25"
+      ],
+      "confidence": 0.999,
+      "text_sha256": [
+        "7d92a1aa505c9506",
+        "e23d8b3d37485740",
+        "d619b09aceefaae8"
+      ]
+    },
+    {
+      "query": "how do I keep basil alive indoors",
+      "titles": [
+        "Wikijunior:The Little Gardener/Basil",
+        "How to save your supermarket basil",
+        "Basil Plant"
+      ],
+      "sources": [
+        "wikibooks",
+        "ifixit",
+        "ifixit"
+      ],
+      "logits": [
+        1.55,
+        1.08,
+        -3.79
+      ],
+      "tiers": [
+        1,
+        1,
+        1
+      ],
+      "origins": [
+        "bm25",
+        "vector",
+        "bm25"
+      ],
+      "confidence": 0.826,
+      "text_sha256": [
+        "c64c7ed46a7a8029",
+        "6e9ec5fb20de9791",
+        "c2e422098f782166"
+      ]
+    }
+  ]
+}

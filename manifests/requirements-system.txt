@@ -1,0 +1,9 @@
+# The seven packages the twelve frozen modules import.
+# Everything else the system uses is Python stdlib.
+PyQt6==6.11.0
+annoy==1.17.3
+libzim==3.10.0
+llama-cpp-python==0.3.23
+numpy==2.4.6
+onnxruntime==1.26.0
+tokenizers==0.23.1

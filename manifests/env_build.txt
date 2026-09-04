@@ -1,0 +1,119 @@
+=========== /media/pi/KINGSTON/local_ai/lenovo_venv ===========
+home = C:\Users\color\AppData\Local\Programs\Python\Python311
+include-system-site-packages = false
+version = 3.11.9
+executable = C:\Users\color\AppData\Local\Programs\Python\Python311\python.exe
+command = C:\Users\color\AppData\Local\Programs\Python\Python311\python.exe -m venv D:\local_ai\lenovo_venv
+--- packages ---
+annotated_doc-0.0.4
+anyio-4.13.0
+certifi-2026.5.20
+charset_normalizer-3.4.7
+click-8.4.1
+colorama-0.4.6
+fastembed-0.8.0
+filelock-3.29.0
+flatbuffers-25.12.19
+fsspec-2026.4.0
+h11-0.16.0
+hf_xet-1.5.0
+httpcore-1.0.9
+httpx-0.28.1
+huggingface_hub-1.17.0
+idna-3.17
+libzim-3.10.0
+loguru-0.7.3
+markdown_it_py-4.2.0
+mdurl-0.1.2
+mmh3-5.2.1
+numpy-2.4.6
+onnxruntime-1.26.0
+packaging-26.2
+pillow-12.2.0
+pip-24.0
+protobuf-7.35.0
+psutil-7.2.2
+pygments-2.20.0
+py_rust_stemmers-0.1.8
+pyyaml-6.0.3
+requests-2.34.2
+rich-15.0.0
+setuptools-65.5.0
+shellingham-1.5.4
+tokenizers-0.23.1
+tqdm-4.67.3
+typer-0.25.1
+typing_extensions-4.15.0
+urllib3-2.7.0
+win32_setctime-1.2.0
+
+=========== /media/pi/KINGSTON/local_ai/hp_venv ===========
+home = C:\Users\Hp\AppData\Local\Programs\Python\Python311
+include-system-site-packages = false
+version = 3.11.9
+executable = C:\Users\Hp\AppData\Local\Programs\Python\Python311\python.exe
+command = C:\Users\Hp\AppData\Local\Programs\Python\Python311\python.exe -m venv G:\local_ai\hp_venv
+--- packages ---
+certifi-2026.5.20
+charset_normalizer-3.4.7
+idna-3.17
+libzim-3.10.0
+pip-24.0
+requests-2.34.2
+setuptools-65.5.0
+urllib3-2.7.0
+
+=========== /media/pi/KINGSTON/nitro_venv ===========
+home = C:\Users\compu\AppData\Local\Programs\Python\Python311
+include-system-site-packages = false
+version = 3.11.9
+executable = C:\Users\compu\AppData\Local\Programs\Python\Python311\python.exe
+command = C:\Users\compu\AppData\Local\Programs\Python\Python311\python.exe -m venv F:\nitro_venv
+--- packages ---
+annotated_doc-0.0.4
+anyio-4.13.0
+certifi-2026.5.20
+charset_normalizer-3.4.7
+click-8.4.1
+colorama-0.4.6
+fastembed-0.8.0
+filelock-3.29.0
+flatbuffers-25.12.19
+fsspec-2026.4.0
+h11-0.16.0
+hf_xet-1.5.0
+httpcore-1.0.9
+httpx-0.28.1
+huggingface_hub-1.17.0
+idna-3.17
+loguru-0.7.3
+markdown_it_py-4.2.0
+mdurl-0.1.2
+mmh3-5.2.1
+numpy-2.4.6
+nvidia_cublas_cu12-12.9.2.10
+nvidia_cuda_nvrtc_cu12-12.9.86
+nvidia_cuda_runtime_cu12-12.9.79
+nvidia_cudnn_cu12-9.23.0.39
+nvidia_cufft_cu12-11.4.1.4
+nvidia_nvjitlink_cu12-12.9.86
+onnxruntime-1.26.0
+onnxruntime_gpu-1.26.0
+packaging-26.2
+pillow-12.2.0
+pip-24.0
+protobuf-7.35.0
+pygments-2.20.0
+py_rust_stemmers-0.1.8
+pyyaml-6.0.3
+requests-2.34.2
+rich-15.0.0
+setuptools-65.5.0
+shellingham-1.5.4
+tokenizers-0.23.1
+tqdm-4.67.3
+typer-0.25.1
+typing_extensions-4.15.0
+urllib3-2.7.0
+win32_setctime-1.2.0
+
