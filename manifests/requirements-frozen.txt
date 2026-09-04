@@ -10,7 +10,13 @@ certifi==2026.5.20
 click==8.4.1
 diskcache==5.6.3
 filelock==3.29.0
-flatbuffers==20181003210633
+# flatbuffers is pinned only by name. The evaluated system had
+# flatbuffers 20181003210633, a 2018 pip release that imports the
+# `imp` module and therefore cannot be imported on Python 3.12+.
+# onnxruntime 1.26.0 never imports it - schema handling is compiled
+# into the C++ extension - so the version cannot affect any result.
+# Pinning it would make this file unsatisfiable on any other machine.
+flatbuffers
 fsspec==2026.4.0
 h11==0.16.0
 hf-xet==1.5.0
