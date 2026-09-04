@@ -433,6 +433,12 @@ def g7():
         raise Skip("golden set absent (--rebuild-fixtures on a full system)")
     if not os.path.exists(os.path.join(SSD, "index/passages.ann")):
         raise Skip("index absent")
+    import glob as _g
+    n_zim = len(_g.glob(os.path.join(SSD, "wikipedia", "*.zim"))) + \
+            len(_g.glob(os.path.join(SSD, "zim_extra", "*.zim")))
+    if n_zim < 41:
+        raise Skip("only %d of 41 archives present; the golden set exercises "
+                   "the deep tier and needs the full corpus" % n_zim)
 
     _quiet_ort()
     sys.path.insert(0, CODE)
@@ -497,6 +503,14 @@ def g8():
         raise Skip(f"GGUF not found at {gguf} (set ALEX_GGUF)")
 
     ref = json.load(open(golden, encoding="utf-8"))
+    import platform as _pl
+    want_arch = ref.get("arch", "aarch64")
+    have_arch = _pl.machine()
+    if have_arch != want_arch:
+        raise Skip("golden recorded on %s, host is %s. llama.cpp selects "
+                   "different SIMD kernels per architecture, so decode is not "
+                   "byte-identical across them (measured, not assumed)."
+                   % (want_arch, have_arch))
     have_ver = _pkg_ver("llama_cpp_python")
     want_ver = ref.get("llama_cpp_python")
     notes = []
@@ -635,7 +649,9 @@ def rebuild_fixtures():
         cases.append({"prompt": PROMPT, "temperature": temp,
                       "max_tokens": 160, "sha256": h, "text": txt})
         print(f"     temp {temp} -> {h[:12]}")
+    import platform as _pl
     json.dump({"llama_cpp_python": _pkg_ver("llama_cpp_python"),
+               "arch": _pl.machine(),
                "gguf": os.path.basename(gguf),
                "note": ("llama-cpp-python passes LLAMA_DEFAULT_SEED (0xffffffff) "
                         "through as a fixed seed rather than drawing randomly, "

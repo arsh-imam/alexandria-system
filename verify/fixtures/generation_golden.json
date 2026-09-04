@@ -1,5 +1,6 @@
 {
   "llama_cpp_python": "0.3.23",
+  "arch": "aarch64",
   "gguf": "Qwen3-1.7B-Q4_K_M.gguf",
   "note": "llama-cpp-python passes LLAMA_DEFAULT_SEED (0xffffffff) through as a fixed seed rather than drawing randomly, so decode is byte-reproducible at every deployed temperature. Verified: explicit seeds DO change output, the default does not. This is version-dependent.",
   "top_p": 0.9,
