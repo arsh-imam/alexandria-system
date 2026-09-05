@@ -1,5 +1,7 @@
 # ALEXANDRIA
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22314039.svg)](https://doi.org/10.5281/zenodo.22314039)
+
 A fully-offline retrieval-augmented assistant: **Qwen3-1.7B (Q4_K_M) on a
 Raspberry Pi 5, 8 GB, CPU-only**, searching **41 ZIM archives (82.1 GB)** at
 query time alongside a **2,028,337-passage** pre-built index. No network access

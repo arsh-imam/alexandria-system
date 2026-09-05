@@ -11,6 +11,11 @@ authors:
   - family-names: Imam
     given-names: Syed Arsh
 type: software
+doi: "10.5281/zenodo.22314039"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.22314039"
+    description: "Concept DOI, resolves to the latest release"
 license: MIT
 repository-code: "https://github.com/arsh-imam/alexandria-system"
 url: "https://huggingface.co/datasets/arshimam/alexandria-system"
