@@ -1,2 +1,0 @@
-gate	title	status	detail	seconds
-G2	embedding alignment (self_cos >= 0.98)	PASS	n=1000 worst=1.000000 mean=1.000000 below_0.98=0 (<0.999: 0, <0.9999: 0) | random-pair control mean=0.4094 max=0.7161 | mismatch control (bare fastembed, n=128): worst=0.7671 mean=0.8648 -> correctly FAILS 0.98	130.8
