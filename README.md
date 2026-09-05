@@ -26,7 +26,10 @@ objects by SHA-256, reassembles the split Wikipedia archive and verifies the
 result, exposes the tree where the frozen modules expect it, and runs the
 verification gates. Nothing is built and no source code is patched.
 
-The download is resumable: interrupt it and re-run the same command.
+The download is resumable: if it stops, re-run the same command and completed
+files are skipped.
+
+Install to a directory that does not already contain a copy of the system.
 
 ## Verification
 

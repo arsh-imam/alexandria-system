@@ -16,6 +16,7 @@ that were evaluated, which is what gate G0 checks.
 
 import argparse
 import csv
+import threading
 import hashlib
 import os
 import platform
@@ -89,8 +90,34 @@ def download(target):
     from huggingface_hub import snapshot_download
     root = os.path.join(target, "local_ai")
     print("    ~96.7 GB, resumable - safe to interrupt and re-run")
-    snapshot_download(repo_id=REPO, repo_type="dataset", local_dir=root,
-                      max_workers=4)
+    stop = threading.Event()
+
+    def _progress():
+        while not stop.wait(20):
+            done = part = 0
+            for r, _, fs in os.walk(root):
+                for f in fs:
+                    try:
+                        n = os.path.getsize(os.path.join(r, f))
+                    except OSError:
+                        continue
+                    if f.endswith(".incomplete"):
+                        part += n
+                    else:
+                        done += n
+            gb = (done + part) / 1e9
+            sys.stdout.write("\r    %.1f / 96.7 GB  (%.0f%%)  "
+                             % (gb, 100 * gb / 96.66))
+            sys.stdout.flush()
+
+    t = threading.Thread(target=_progress, daemon=True)
+    t.start()
+    try:
+        snapshot_download(repo_id=REPO, repo_type="dataset", local_dir=root,
+                          max_workers=4, tqdm_class=None)
+    finally:
+        stop.set()
+        sys.stdout.write("\r" + " " * 50 + "\r")
     print(f"    downloaded to {root}")
     return root
 
