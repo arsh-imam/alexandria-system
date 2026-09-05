@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or its evaluation data, please cite it."
+title: "ALEXANDRIA: a fully-offline retrieval-augmented assistant on a Raspberry Pi 5"
+abstract: >-
+  A fully-offline retrieval-augmented assistant running Qwen3-1.7B (Q4_K_M)
+  on a Raspberry Pi 5, CPU-only, searching 41 ZIM archives at query time
+  alongside a 2,028,337-passage index. This repository contains the frozen
+  system as evaluated, a nine-gate verification suite, an installer, and the
+  complete per-query evaluation records.
+authors:
+  - family-names: Imam
+    given-names: Syed Arsh
+type: software
+license: MIT
+repository-code: "https://github.com/arsh-imam/alexandria-system"
+url: "https://huggingface.co/datasets/arshimam/alexandria-system"
+keywords:
+  - retrieval-augmented generation
+  - offline systems
+  - edge computing
+  - small language models
+  - reproducibility
