@@ -8,6 +8,11 @@ Output: ALEXANDRIA_FINAL_EVALUATION.md
 import collections, glob, json, math, os, random, statistics as st
 import common as C
 
+_SCIPY_MSG = ("scipy is required for the McNemar tests in this "
+              "document.\n"
+              "Install the evaluation dependencies:\n"
+              "    python3 -m pip install -r requirements-eval.txt")
+
 OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                    "ALEXANDRIA_FINAL_EVALUATION.md")
 L = []
@@ -227,7 +232,8 @@ if _do and _dob:
     try:
         from scipy.stats import binomtest
         _pv = binomtest(_x, _x+_y, .5).pvalue if (_x+_y) else 1.0
-    except ImportError: _pv = float("nan")
+    except ImportError:
+        raise SystemExit(_SCIPY_MSG)
     DEEPONLY = {"n": len(_dq),
                 "accB": 100*sum(_hbd(i) for i in _dq)/len(_dq),
                 "accD": 100*sum(_hdd(i) for i in _dq)/len(_dq),
@@ -263,7 +269,8 @@ if _g and _ga and _gb:
         try:
             from scipy.stats import binomtest
             pv = binomtest(x, x+y, .5).pvalue if (x+y) else 1.0
-        except ImportError: pv = float("nan")
+        except ImportError:
+            raise SystemExit(_SCIPY_MSG)
         GARM["rows"].append((lbl, len(ids), aa, bb, gg, round(bb,1)-round(gg,1), lo, hi, x, y, pv))
     GARM["overall"] = (100*sum(_hb(i) for i in _gq)/len(_gq), 100*sum(_hg(i) for i in _gq)/len(_gq))
     F["gate_unc"] = GARM["rows"][0][5]; F["gate_uncp"] = GARM["rows"][0][10]
@@ -294,7 +301,8 @@ if LADDER is not None:
         try:
             from scipy.stats import binomtest
             pv = binomtest(a_, a_+b_, .5).pvalue if (a_+b_) else 1.0
-        except ImportError: pv = float("nan")
+        except ImportError:
+            raise SystemExit(_SCIPY_MSG)
         return round(_acc(y,ids),1)-round(_acc(x,ids),1), pv
     STRAT = {"perrel": [], "strata": {}, "mix": []}
     for prop, ids in sorted(_byp.items(), key=lambda x: -_acc("A", x[1])):
@@ -432,7 +440,8 @@ if all(v is not None for v in _xd.values()):
             try:
                 from scipy.stats import binomtest
                 pv = binomtest(a_, a_+b_, .5).pvalue if (a_+b_) else 1.0
-            except ImportError: pv = float("nan")
+            except ImportError:
+                raise SystemExit(_SCIPY_MSG)
             out[tag] = (d_, a_, b_, pv); F["xo_%s_%s" % (nm2, tag)] = round(d_, 1)
             F["xop_%s_%s" % (nm2, tag)] = pv
         XOVER["half"][nm2] = out
@@ -598,7 +607,7 @@ for b, nm in BENCH:
         from scipy.stats import binomtest
         pv = binomtest(x, x+y, .5).pvalue if (x+y) else 1.0
     except ImportError:
-        pv = float("nan")
+        raise SystemExit(_SCIPY_MSG)
     gu = 100*sum(1 for i in un if B_[i].get("zone") == "grounded")/len(un)
     gc = 100*sum(1 for i in cv if B_[i].get("zone") == "grounded")/len(cv)
     DIST.append((nm, b, len(un), a, bb, a-bb, x, y, pv, gu, gc, gc-gu))
@@ -634,7 +643,7 @@ for b, nm in BENCH:
         from scipy.stats import binomtest
         pv = binomtest(x, x+y, .5).pvalue if (x+y) else 1.0
     except ImportError:
-        pv = float("nan")
+        raise SystemExit(_SCIPY_MSG)
     BC1.append((nm, b, len(cv), bb, c, round(bb,1)-round(c,1), x, y, pv))
     F["bc1_%s" % b] = round(bb,1)-round(c,1); F["bc1p_%s" % b] = pv
 
