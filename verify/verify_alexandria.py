@@ -189,8 +189,31 @@ def g2():
     onnx = os.path.join(embed_dir, "model.onnx")
     tokj = os.path.join(embed_dir, "tokenizer.json")
     if not (os.path.exists(onnx) and os.path.exists(tokj)):
-        raise Skip(f"embedder not found in {embed_dir} "
-                   "(set ALEX_EMBED_DIR)")
+        # Not installed: fetch the pinned revision into a cache beside this
+        # file so the gate runs from a bare clone. 133 MB, verified by hash.
+        REV = "5c38ec7c405ec4b44b94cc5a9bb96e735b38267a"
+        BASE = "https://huggingface.co/BAAI/bge-small-en-v1.5/resolve/" + REV + "/"
+        WANT = {"model.onnx": "828e1496d7fabb79cfa4dcd84fa38625c0d3d21da474a00f08db0f559940cf35",
+                "tokenizer.json": "d241a60d5e8f04cc1b2b3e9ef7a4921b27bf526d9f6050ab90f9267a1f9e5c66"}
+        embed_dir = os.path.join(HERE, ".embedder-cache")
+        os.makedirs(embed_dir, exist_ok=True)
+        onnx = os.path.join(embed_dir, "model.onnx")
+        tokj = os.path.join(embed_dir, "tokenizer.json")
+        import urllib.request, urllib.error
+        for fn, want in WANT.items():
+            dst = os.path.join(embed_dir, fn)
+            if os.path.exists(dst) and sha256(dst) == want:
+                continue
+            url = BASE + ("onnx/" if fn.endswith(".onnx") else "") + fn
+            print("      fetching %s (pinned revision)" % fn, flush=True)
+            try:
+                urllib.request.urlretrieve(url, dst)
+            except Exception as e:
+                raise Skip("embedder absent and download failed (%s). "
+                           "Install the system, or set ALEX_EMBED_DIR." % type(e).__name__)
+            if sha256(dst) != want:
+                os.remove(dst)
+                raise Skip("downloaded embedder failed its hash check")
 
     _quiet_ort()
     sys.path.insert(0, CODE)

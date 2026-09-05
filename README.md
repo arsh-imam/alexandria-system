@@ -47,6 +47,10 @@ Install to a directory that does not already contain a copy of the system.
 | G7 | fixed query set reproduces retrieval exactly | full install |
 | G8 | decode byte-identical at 0.2 / 0.4 / 0.6 | GGUF, aarch64 |
 
+G0 through G3 run from a bare clone with no corpus. G2 fetches the embedding
+model on first use, at the exact revision the index was built with, and
+verifies it by hash.
+
 Gates state their own prerequisites and **skip rather than fail** when those are
 absent; a skipped gate is reported as unverified, never as passed. G0-G3 run
 from a bare clone in about five minutes.
