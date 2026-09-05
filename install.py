@@ -14,6 +14,9 @@ Nothing is patched. The twelve runtime modules stay byte-identical to the ones
 that were evaluated, which is what gate G0 checks.
 """
 
+import os
+os.environ.setdefault("HF_HUB_DISABLE_PROGRESS_BARS", "1")
+
 import argparse
 import csv
 import threading
@@ -106,18 +109,19 @@ def download(target):
                     else:
                         done += n
             gb = (done + part) / 1e9
-            sys.stdout.write("\r    %.1f / 96.7 GB  (%.0f%%)  "
-                             % (gb, 100 * gb / 96.66))
+            pct = 100 * gb / 96.66
+            unit = ("%7.0f MB" % (gb * 1000)) if gb < 1 else ("%7.2f GB" % gb)
+            sys.stdout.write("    %s / 96.7 GB  (%4.1f%%)\n" % (unit, pct))
             sys.stdout.flush()
 
     t = threading.Thread(target=_progress, daemon=True)
     t.start()
     try:
         snapshot_download(repo_id=REPO, repo_type="dataset", local_dir=root,
-                          max_workers=4, tqdm_class=None)
+                          max_workers=4)
     finally:
         stop.set()
-        sys.stdout.write("\r" + " " * 50 + "\r")
+        pass
     print(f"    downloaded to {root}")
     return root
 
