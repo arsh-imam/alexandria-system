@@ -1,0 +1,15 @@
+{
+  "run": "1a_N3",
+  "utc": "2026-08-21T08:16:28.072501Z",
+  "seed": 20260702,
+  "arm": "N3",
+  "set": "popqa_lt_1399.jsonl",
+  "set_md5": "888e38be8855e9b3c416d88fc12a835d",
+  "config_hash": "27a7afd29a6d",
+  "k": 5,
+  "pool": 20,
+  "retrieval": "hybrid dense+BM25, RRF(k=60), dedup by title, no reranker, no gate",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. Passages are provided that may be relevant; use them if they help, but if they do not contain the answer, answer from your own knowledge. If you do not know, say you do not know. /no_think",
+  "temperature": 0.0,
+  "note": "fair standard-practice RAG baseline"
+}

@@ -1,0 +1,17 @@
+{
+  "run": "1c_C1",
+  "utc": "2026-08-18T01:59:17.358604Z",
+  "seed": 20260702,
+  "arm": "C1",
+  "model": "gemini-3.6-flash",
+  "set": "eq_1200.jsonl",
+  "set_md5": "ee1cec43540474cac55e2d27e0560635",
+  "config_hash": "bd39d30222db",
+  "temperature": 0,
+  "max_output_tokens": 1500,
+  "thinking": "provider default (ON)",
+  "access_date": "2026-08-18",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know.",
+  "c2_prefix": null,
+  "b_source": null
+}

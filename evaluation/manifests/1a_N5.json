@@ -1,0 +1,23 @@
+{
+  "run": "1a_N5",
+  "utc": "2026-08-24T00:49:47.627334Z",
+  "seed": 20260702,
+  "arm": "N5",
+  "set": "popqa_lt_1399.jsonl",
+  "set_md5": "888e38be8855e9b3c416d88fc12a835d",
+  "config_hash": "d7dc8ff5d0d9",
+  "zim": "/media/pi/KINGSTON/local_ai/wikipedia/wikipedia_en.zim",
+  "retrieval": "single-query ZIM full-text search -> chunk -> cross-encoder -> dedup -> top-k",
+  "excluded_vs_B": [
+    "multi-query expansion",
+    "entity-span title lookup",
+    "specialty routing",
+    "authority prior",
+    "passage hygiene",
+    "three-zone gate",
+    "fast-index generators"
+  ],
+  "note": "EQUAL-REACH baseline; isolates architecture from index reach",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. Passages are provided that may be relevant; use them if they help, but if they do not contain the answer, answer from your own knowledge. If you do not know, say you do not know. /no_think",
+  "temperature": 0.0
+}

@@ -1,0 +1,14 @@
+{
+  "run": "1a_OA_gpt-4_1-mini",
+  "utc": "2026-08-30T09:55:22.551075Z",
+  "seed": 20260702,
+  "arm": "OA",
+  "model": "openai/gpt-4.1-mini",
+  "set": "popqa_lt_1399.jsonl",
+  "set_md5": "888e38be8855e9b3c416d88fc12a835d",
+  "temperature": 0,
+  "max_tokens": 150,
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know.",
+  "access": "2026-08-30",
+  "note": "closed-book capability-curve arm; accessed via OpenAI-compatible reseller"
+}

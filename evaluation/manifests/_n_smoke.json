@@ -1,0 +1,15 @@
+{
+  "run": "_n_smoke",
+  "utc": "2026-08-15T02:40:48.195516Z",
+  "seed": 20260702,
+  "arm": "N",
+  "set": "pilot_150.jsonl",
+  "set_md5": "4fc62b0dd0eb4c4ee77d393a6efe94f5",
+  "config_hash": "63f9ddb7159f",
+  "k": 3,
+  "mode": "bm25",
+  "retrieval": "dense Annoy only, cosine rank, no reranker, no gate",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely using the passages provided. If you do not know the answer, say you do not know. /no_think",
+  "temperature": 0.0,
+  "note": "naive-RAG baseline; isolates ALEXANDRIA's retrieval architecture"
+}

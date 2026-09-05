@@ -6,3 +6,6 @@ logs/
 release/
 __pycache__/
 *.pyc
+ALEXANDRIA_FINAL_EVALUATION.md
+EVAL_BEFORE.md
+RESULTS.md.shipped

@@ -1,0 +1,15 @@
+{
+  "run": "1a_N_bm25",
+  "utc": "2026-08-15T02:44:33.907491Z",
+  "seed": 20260702,
+  "arm": "N",
+  "set": "popqa_lt_1399.jsonl",
+  "set_md5": "888e38be8855e9b3c416d88fc12a835d",
+  "config_hash": "63f9ddb7159f",
+  "k": 3,
+  "mode": "bm25",
+  "retrieval": "dense Annoy only, cosine rank, no reranker, no gate",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely using the passages provided. If you do not know the answer, say you do not know. /no_think",
+  "temperature": 0.0,
+  "note": "naive-RAG baseline; isolates ALEXANDRIA's retrieval architecture"
+}

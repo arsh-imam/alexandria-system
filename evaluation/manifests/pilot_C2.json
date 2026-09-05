@@ -1,0 +1,17 @@
+{
+  "run": "pilot_C2",
+  "utc": "2026-08-14T04:32:42.974385Z",
+  "seed": 20260702,
+  "arm": "C2",
+  "model": "gemini-3.6-flash",
+  "set": "pilot_150.jsonl",
+  "set_md5": "4fc62b0dd0eb4c4ee77d393a6efe94f5",
+  "config_hash": "17a023b476e6",
+  "temperature": 0,
+  "max_output_tokens": 1500,
+  "thinking": "provider default (ON)",
+  "access_date": "2026-08-14",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know.",
+  "c2_prefix": "The following passages may help. Use them if relevant, and prefer them over memory for facts.\n\n",
+  "b_source": "pilot_B"
+}

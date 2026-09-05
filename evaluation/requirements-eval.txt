@@ -1,0 +1,49 @@
+# Full transitive closure of the seven direct dependencies,
+# pinned to the exact versions of the evaluated system.
+# huggingface-hub and httpx appear via tokenizers and are never
+# invoked: the tokenizer is loaded with Tokenizer.from_file().
+# Gate G9 proves this empirically by blocking all network access.
+annotated-doc==0.0.4
+annoy==1.17.3
+anyio==4.13.0
+certifi==2026.5.20
+click==8.4.1
+diskcache==5.6.3
+filelock==3.29.0
+# flatbuffers is pinned only by name. The evaluated system had
+# flatbuffers 20181003210633, a 2018 pip release that imports the
+# `imp` module and therefore cannot be imported on Python 3.12+.
+# onnxruntime 1.26.0 never imports it - schema handling is compiled
+# into the C++ extension - so the version cannot affect any result.
+# Pinning it would make this file unsatisfiable on any other machine.
+flatbuffers
+fsspec==2026.4.0
+h11==0.16.0
+hf-xet==1.5.0
+httpcore==1.0.9
+httpx==0.28.1
+huggingface-hub==1.16.4
+idna==3.19
+jinja2==3.1.6
+libzim==3.10.0
+llama-cpp-python==0.3.23
+markdown-it-py==4.2.0
+markupsafe==3.0.3
+numpy==2.4.6
+onnxruntime==1.26.0
+packaging==26.2
+protobuf==7.35.0
+pygments==2.20.0
+pyqt6==6.11.0
+pyqt6-qt6==6.11.1
+pyqt6-sip==13.11.1
+pyyaml==6.0.3
+rich==15.0.0
+shellingham==1.5.4
+tokenizers==0.23.1
+tqdm==4.67.3
+typer==0.25.1
+typing-extensions==4.15.0
+
+# additionally required to recompute the statistics
+scipy==1.17.1

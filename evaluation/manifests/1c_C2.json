@@ -1,0 +1,17 @@
+{
+  "run": "1c_C2",
+  "utc": "2026-08-21T04:37:40.846171Z",
+  "seed": 20260702,
+  "arm": "C2",
+  "model": "gemini-3.6-flash",
+  "set": "eq_1200.jsonl",
+  "set_md5": "ee1cec43540474cac55e2d27e0560635",
+  "config_hash": "17a023b476e6",
+  "temperature": 0,
+  "max_output_tokens": 1500,
+  "thinking": "provider default (ON)",
+  "access_date": "2026-08-21",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know.",
+  "c2_prefix": "The following passages may help. Use them if relevant, and prefer them over memory for facts.\n\n",
+  "b_source": "1c_B"
+}

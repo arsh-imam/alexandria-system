@@ -1,0 +1,20 @@
+{
+  "run": "sets_frozen",
+  "utc": "2026-08-13T20:30:11.687613Z",
+  "seed": 20260702,
+  "popqa_md5": "4d2c91f465ce6d908a2e3780b80ead70",
+  "sets": {
+    "core400.jsonl": "42adae9a2c545d23244493d0bab63da6",
+    "eq_1200.jsonl": "ee1cec43540474cac55e2d27e0560635",
+    "pilot_150.jsonl": "4fc62b0dd0eb4c4ee77d393a6efe94f5",
+    "popqa_deciles_1000.jsonl": "e13c7aba74a02c4e20630e8418bac29c",
+    "popqa_lt_1399.jsonl": "888e38be8855e9b3c416d88fc12a835d"
+  },
+  "counts": {
+    "core400.jsonl": 400,
+    "eq_1200.jsonl": 1200,
+    "pilot_150.jsonl": 150,
+    "popqa_deciles_1000.jsonl": 1000,
+    "popqa_lt_1399.jsonl": 1399
+  }
+}

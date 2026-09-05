@@ -1,0 +1,24 @@
+{
+  "run": "_n4_smoke",
+  "utc": "2026-08-17T02:40:49.776447Z",
+  "seed": 20260702,
+  "arm": "N4",
+  "set": "pilot_150.jsonl",
+  "set_md5": "4fc62b0dd0eb4c4ee77d393a6efe94f5",
+  "config_hash": "63e9ea5cb2b4",
+  "k": 3,
+  "pool": 20,
+  "rerank_n": 20,
+  "retrieval": "hybrid dense+BM25 -> RRF(60) -> cross-encoder rerank -> dedup -> top-3",
+  "reranker": "ms-marco-MiniLM-L-6-v2 INT8 (identical to arm B)",
+  "excluded_vs_B": [
+    "federated ZIM deep tier",
+    "entity-span title lookup",
+    "passage hygiene",
+    "authority prior",
+    "three-zone gate"
+  ],
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. Passages are provided that may be relevant; use them if they help, but if they do not contain the answer, answer from your own knowledge. If you do not know, say you do not know. /no_think",
+  "temperature": 0.0,
+  "note": "STANDARD 2026 RAG baseline - the headline comparison arm"
+}

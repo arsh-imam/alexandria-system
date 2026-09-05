@@ -1,0 +1,13 @@
+{
+  "run": "1a_G",
+  "utc": "2026-08-29T19:55:45.243608Z",
+  "seed": 20260702,
+  "arm": "G",
+  "source": "1a_B",
+  "config_hash": "51ac5a0ba37f",
+  "method": "harness replay of arm-B passages with forced grounding instruction",
+  "engine_touched": false,
+  "system_prompt": "You are a helpful assistant. Answer the question using the reference notes below as your factual basis. Write directly to the reader without mentioning the notes. Do NOT write a Sources line. /no_think",
+  "temperature": 0.2,
+  "note": "always-ground control; isolates the evidence gate causally"
+}

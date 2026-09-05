@@ -92,6 +92,14 @@ reports as unavailable and the gate still passes on its primary measurement.
 | `manifests/` | hashes, environment locks, corpus and ZIM provenance |
 | `install.py` | reviewer installer |
 | `tools/setup_paths.sh` | bind-mount helper, used when /media is not writable |
+| `evaluation/` | every per-query record, the statistics, and `RESULTS.md` |
+
+## Evaluation
+
+`evaluation/RESULTS.md` holds every reported figure, generated from 44,765
+per-query records rather than written by hand. `evaluation/README.md` describes
+what can be re-checked and how, from reading the tables to re-running individual
+generations through the installed system.
 
 ## Notes on reproduction
 

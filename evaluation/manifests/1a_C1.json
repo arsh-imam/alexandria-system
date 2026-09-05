@@ -1,0 +1,17 @@
+{
+  "run": "1a_C1",
+  "utc": "2026-08-15T02:35:46.166447Z",
+  "seed": 20260702,
+  "arm": "C1",
+  "model": "gemini-3.6-flash",
+  "set": "popqa_lt_1399.jsonl",
+  "set_md5": "888e38be8855e9b3c416d88fc12a835d",
+  "config_hash": "bd39d30222db",
+  "temperature": 0,
+  "max_output_tokens": 1500,
+  "thinking": "provider default (ON)",
+  "access_date": "2026-08-15",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know.",
+  "c2_prefix": null,
+  "b_source": null
+}

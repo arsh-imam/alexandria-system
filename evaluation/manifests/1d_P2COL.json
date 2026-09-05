@@ -1,0 +1,17 @@
+{
+  "run": "1d_P2COL",
+  "utc": "2026-08-17T04:01:35.324693Z",
+  "seed": 20260702,
+  "arm": "C1",
+  "model": "gemini-3.1-pro-preview",
+  "set": "nq_open_500.jsonl",
+  "set_md5": "568f38f9b3e189e83453f79834921033",
+  "config_hash": "579ec1e50d8d",
+  "temperature": 0,
+  "max_output_tokens": 1500,
+  "thinking": "provider default (ON)",
+  "access_date": "2026-08-17",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know.",
+  "c2_prefix": null,
+  "b_source": null
+}

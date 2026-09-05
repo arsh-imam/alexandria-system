@@ -1,0 +1,17 @@
+{
+  "run": "1a_A",
+  "utc": "2026-08-14T15:13:02.660201Z",
+  "seed": 20260702,
+  "arm": "A",
+  "set": "popqa_lt_1399.jsonl",
+  "set_md5": "888e38be8855e9b3c416d88fc12a835d",
+  "config_hash": "c7519547eb23",
+  "gguf": "/media/pi/KINGSTON/local_ai/models/Qwen3-1.7B-Q4_K_M.gguf",
+  "system_prompt": "You are a helpful assistant. Answer the question directly and concisely. If you do not know the answer, say you do not know. /no_think",
+  "temperature": 0.0,
+  "max_tokens": 128,
+  "n_ctx": 4096,
+  "n_threads": 4,
+  "n_batch": 512,
+  "note": "raw base model; no retrieval, no engine scaffolding"
+}
