@@ -14,9 +14,12 @@ never a reconstruction.
 import argparse, hashlib, json, os, subprocess, sys, time
 
 # engine modules live one level up (~/local_ai_project); make them importable
-_ENGINE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ENGINE_DIR not in sys.path:
-    sys.path.insert(0, _ENGINE_DIR)
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.environ.get("ALEX_CODE", os.path.join(_REPO, "src"))
+if not os.path.isdir(_SRC):          # historical layout: modules beside evaluation/
+    _SRC = _REPO
+if _SRC not in sys.path:
+    sys.path.insert(0, _SRC)
 
 import common as C
 

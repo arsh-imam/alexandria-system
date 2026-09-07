@@ -5,8 +5,12 @@ deep tier, no entity spans, no gate. Same model/corpus/hardware as arm B.
 This is the fair baseline: it isolates ALEXANDRIA's architecture, not its
 implementation hygiene."""
 import argparse, hashlib, json, os, re, sys, time
-_ENG = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ENG not in sys.path: sys.path.insert(0, _ENG)
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.environ.get("ALEX_CODE", os.path.join(_REPO, "src"))
+if not os.path.isdir(_SRC):          # historical layout: modules beside evaluation/
+    _SRC = _REPO
+if _SRC not in sys.path:
+    sys.path.insert(0, _SRC)
 import common as C
 
 SYS = ("You are a helpful assistant. Answer the question directly and "

@@ -8,9 +8,12 @@ Differs ONLY in retrieval architecture:
 Engine files untouched: uses Retriever's loaded index read-only and calls
 llama-cpp directly. Isolates 'our retrieval architecture' as the variable."""
 import argparse, hashlib, json, os, re, sys, time
-_ENG = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ENG not in sys.path:
-    sys.path.insert(0, _ENG)
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.environ.get("ALEX_CODE", os.path.join(_REPO, "src"))
+if not os.path.isdir(_SRC):          # historical layout: modules beside evaluation/
+    _SRC = _REPO
+if _SRC not in sys.path:
+    sys.path.insert(0, _SRC)
 import common as C
 
 SYS = ("You are a helpful assistant. Answer the question directly and "

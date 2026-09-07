@@ -1,18 +1,30 @@
-"""Arm N5 - EQUAL-REACH BASELINE. 'Kiwix search + reranker'.
+"""Arm N5 - single-query full-Wikipedia-ZIM RAG baseline.
 
-Answers the reviewer question: is B's advantage architecture, or just index reach?
-N5 has the SAME reach as B (live full-text search over the whole Wikipedia ZIM)
-but NONE of B's retrieval architecture:
+CORRECTION (post-hoc): earlier versions of this docstring, and the run manifests
+emitted by them, described N5 as an "equal-reach baseline" having "the SAME reach
+as B". That is incorrect. N5 searches exactly one archive, the English Wikipedia
+ZIM (see ZIM below). ALEXANDRIA searches 35 registered archives and additionally
+draws candidates from the external passage index. N5 -> B is therefore an
+aggregate difference in both retrieval architecture and corpus reach, not
+architecture with reach held constant. Historical manifests retain the original
+wording as evidence of what was actually run.
+
+N5 uses archive-native full-text search over the Wikipedia ZIM with none of B's
+retrieval architecture:
   - single raw query (no multi-query expansion, no rare-term or entity sub-queries)
   - no entity-span title lookup, no specialty routing, no authority prior, no hygiene
   - no three-zone gate (always injects top-k)
   - no fast-index generators
 It DOES get: full-article chunking + cross-encoder rerank + title dedup, i.e. the
-strongest reasonable naive implementation. B - N5 = architecture, reach held constant.
+strongest reasonable naive implementation.
 """
 import argparse, hashlib, html, json, os, re, sys, time
-_ENG = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ENG not in sys.path: sys.path.insert(0, _ENG)
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.environ.get("ALEX_CODE", os.path.join(_REPO, "src"))
+if not os.path.isdir(_SRC):          # historical layout: modules beside evaluation/
+    _SRC = _REPO
+if _SRC not in sys.path:
+    sys.path.insert(0, _SRC)
 import common as C
 
 ZIM = "/media/pi/KINGSTON/local_ai/wikipedia/wikipedia_en.zim"
@@ -94,7 +106,7 @@ def main():
                           "specialty routing", "authority prior", "passage hygiene",
                           "three-zone gate", "fast-index generators"],
         "query_mode": args.query_mode, "no_gold_subj": args.no_gold_subj,
-        "note": "EQUAL-REACH baseline; isolates architecture from index reach",
+        "note": "single-query full-Wikipedia-ZIM RAG baseline; searches the English Wikipedia ZIM only, not B's 35 registered archives",
         "system_prompt": SYS, "temperature": 0.0})
 
     w = C.Writer(path); t0all = time.time()

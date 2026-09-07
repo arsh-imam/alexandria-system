@@ -132,7 +132,7 @@ BENCH = [("1a", "PopQA long-tail"), ("1b", "PopQA popularity deciles"),
 CORE = ["A", "N4", "N5", "B", "C1", "C2", "P2COL"]
 NAME = {"A": "raw Qwen3-1.7B (no retrieval)",
         "N4": "pre-built-index RAG (no query-time corpus access)",
-        "N5": "full-corpus RAG — equal reach to B",
+        "N5": "full-Wikipedia-ZIM RAG, single raw query",
         "B": "ALEXANDRIA (Pi)",
         "C1": "Gemini 3.6 Flash closed-book",
         "C2": "Gemini + our retrieved context",
@@ -1690,7 +1690,7 @@ for r in REACH:
     w()
     T([("FULL-CORPUS RETRIEVAL vs NONE (A → N5)", "%+.1f pp" % r["cmp"]["reach"][0],
         "%d / %d" % (r["cmp"]["reach"][1], r["cmp"]["reach"][2]), pfmt(r["cmp"]["reach"][3])),
-       ("ARCHITECTURE, reach held constant (N5 → B)", "%+.1f pp" % r["cmp"]["arch"][0],
+       ("AGGREGATE architecture + reach (N5 → B)", "%+.1f pp" % r["cmp"]["arch"][0],
         "%d / %d" % (r["cmp"]["arch"][1], r["cmp"]["arch"][2]), pfmt(r["cmp"]["arch"][3])),
        ("INDEX REACH, architecture ~constant (N4 → N5)", "%+.1f pp" % r["cmp"]["idx"][0],
         "%d / %d" % (r["cmp"]["idx"][1], r["cmp"]["idx"][2]), pfmt(r["cmp"]["idx"][3])),
@@ -2053,7 +2053,7 @@ T([("`common.py`", "Dataset loaders, the single global matcher, seeded sampling,
    ("`run_arm_a.py`", "Arm A — raw model, standalone llama-cpp"),
    ("`run_arm_b.py`", "Arm B — frozen system with pure observation wrappers"),
    ("`run_std_rag.py`", "Arm N4 — standard RAG over the pre-built index"),
-   ("`run_kiwix_rag.py`", "Arm N5 — full-corpus ZIM search + rerank (equal reach)"),
+   ("`run_kiwix_rag.py`", "Arm N5 — Wikipedia-ZIM search + rerank, single raw query"),
    ("`run_naive_rag.py`, `run_hybrid_rag.py`", "Appendix baseline rungs"),
    ("`run_frontier.py`", "C1 / C2 / P2COL"),
    ("`run_judge.py`, `run_judge2.py`", "Primary and cross-check LLM judges"),
@@ -2108,7 +2108,9 @@ w("  tables, a pre-registered prediction reported as failed, ablation nulls repo
 w()
 w("## What must not be claimed")
 w()
-w("- **Never write \"same corpus\"** for B vs N4 — reach differs. N5 is the equal-reach arm; use it.")
+w("- **Never write \"same corpus\"** for B vs N4 — reach differs. N5 is NOT equal-reach either: "
+    "it searches the Wikipedia ZIM only, while B searches 35 registered archives. N5 → B is an "
+    "aggregate difference in architecture AND reach.")
 w("- **Never claim a 1.7B model beats a frontier model at reading.** Given identical evidence the")
 w("  frontier wins on every benchmark (" + ref("c2") + ").")
 w("- **Never present the gate as simply working or simply broken.** It causally reduces harm when")

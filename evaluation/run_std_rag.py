@@ -10,8 +10,12 @@ NOT included (these are what arm B adds): federated ZIM deep-tier search,
 entity-span title lookup, passage hygiene, authority prior, three-zone gate.
 Same GGUF, same corpus, same hardware as arm B."""
 import argparse, hashlib, json, os, re, sys, time
-_ENG = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-if _ENG not in sys.path: sys.path.insert(0, _ENG)
+_REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+_SRC = os.environ.get("ALEX_CODE", os.path.join(_REPO, "src"))
+if not os.path.isdir(_SRC):          # historical layout: modules beside evaluation/
+    _SRC = _REPO
+if _SRC not in sys.path:
+    sys.path.insert(0, _SRC)
 import common as C
 
 SYS = ("You are a helpful assistant. Answer the question directly and "
