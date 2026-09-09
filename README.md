@@ -3,9 +3,12 @@
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22314038.svg)](https://doi.org/10.5281/zenodo.22314038)
 
 A fully-offline retrieval-augmented assistant: **Qwen3-1.7B (Q4_K_M) on a
-Raspberry Pi 5, 8 GB, CPU-only**, searching **41 ZIM archives (82.1 GB)** at
-query time alongside a **2,028,337-passage** pre-built index. No network access
-at any point after installation.
+Raspberry Pi 5, 8 GB, CPU-only**. It stores **41 ZIM archives totalling
+82.12 GB**; the query-time archive registry exposes **35 of them, 65.30 GB**, to
+deep retrieval — English Wikipedia always, plus 34 specialist archives routed per
+query. The remaining six contributed passages to the **2,028,337-passage**
+pre-built index but are not opened by the deep retriever. Normal operation has no
+network dependency after provisioning.
 
 This repository is the **frozen system as evaluated**. The twelve modules in
 `src/` are byte-identical to the ones under test; `manifests/code_hashes.tsv`
@@ -41,19 +44,19 @@ Install to a directory that does not already contain a copy of the system.
 | G1 | pinned dependency versions | clone |
 | G2 | query/index embedding alignment, self_cos >= 0.98 | clone + 133 MB embedder |
 | G3 | 160-word windows, 40-word overlap, per-source caps | clone |
-| G4 | four-way row-index join across the index artifacts | index |
-| G5 | aarch64 CPU_REPACK kernels active | GGUF, aarch64 |
-| G6 | 41 archives by size, ZIM UUID and SHA-256 | corpus |
+| G4 | index cardinality and ID-layout integrity | index |
+| G5 | aarch64 CPU_REPACK kernels active | GGUF, aarch64 only |
+| G6 | 41 stored archives by size and ZIM UUID; SHA-256 with `--deep` | corpus |
 | G7 | fixed query set reproduces retrieval exactly | full install |
 | G8 | decode byte-identical at 0.2 / 0.4 / 0.6 | GGUF, aarch64 |
 
-G0 through G3 run from a bare clone with no corpus. G2 fetches the embedding
-model on first use, at the exact revision the index was built with, and
-verifies it by hash.
+G0 through G3 need no corpus. G0 and G3 read only files in the clone; G1 and G2
+additionally need the pinned Python environment installed, and G2 needs the
+embedding model — which it fetches on first use, at the exact revision the index
+was built with, verifying it by hash. Together they take about five minutes.
 
 Gates state their own prerequisites and **skip rather than fail** when those are
-absent; a skipped gate is reported as unverified, never as passed. G0-G3 run
-from a bare clone in about five minutes.
+absent; a skipped gate is reported as unverified, never as passed.
 
 **G2 is the load-bearing one.** It embeds 1,000 sampled passages through the
 real `AlignedEmbedder` and scores them against their stored vectors, alongside
@@ -71,8 +74,9 @@ different output on x86-64 than the aarch64 reference in every case. Both gates
 therefore skip on a non-aarch64 host and say why. The latency figures reported in
 the paper are Raspberry Pi 5 measurements.
 
-What does hold across architectures, measured on both aarch64 (Raspberry Pi 5)
-and x86-64 (Debian under WSL 2):
+Retrieval identity across architectures has not been tested: that would require
+G7 run with the full corpus on both hosts, which has not been done. What was
+measured on both aarch64 (Raspberry Pi 5) and x86-64 (Debian under WSL 2):
 
 | | result |
 |---|---|
@@ -81,11 +85,12 @@ and x86-64 (Debian under WSL 2):
 | Artifact hashes | all objects verified by SHA-256 on both |
 | Decode (G8) | **differs** |
 
-Retrieval is not architecture-dependent. G2 was run on both aarch64 (Raspberry
-Pi 5) and x86-64 (Debian under WSL 2) against the same 1,000-passage fixture and
-returned identical values to six decimal places on both: worst 1.000000, mean
-1.000000, random-pair floor 0.4094. The embedding path therefore produces the
-same query vectors on either architecture.
+The embedding path is not architecture-dependent. G2 was run on both aarch64
+(Raspberry Pi 5) and x86-64 (Debian under WSL 2) against the same 1,000-passage
+fixture and returned identical values to six decimal places on both: worst
+1.000000, mean 1.000000, random-pair floor 0.4094. Full retrieval identity
+across architectures has not been tested, which would require G7 with the
+complete corpus on both hosts.
 
 The mismatch control inside G2 needs `fastembed`, which is a development
 dependency and is not in `requirements-frozen.txt`. Without it the control
