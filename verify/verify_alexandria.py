@@ -479,9 +479,12 @@ def g7():
 
     _quiet_ort()
     sys.path.insert(0, CODE)
-    from retriever import Retriever
+    import retriever as _R
+    # main.py enables epistemic fusion at startup; RETRIEVAL_CONFIG defaults it
+    # off. Verify the configuration the application actually runs.
+    _R.RETRIEVAL_CONFIG["use_epistemic_fusion"] = True
     ref = json.load(open(golden, encoding="utf-8"))
-    r = Retriever()
+    r = _R.Retriever()
     r.load()
 
     exact, neighbour_drift, corrupt, logit_drift = 0, [], [], []
@@ -510,7 +513,9 @@ def g7():
                 logit_drift.append(case["query"][:38])
 
     n = len(ref["cases"])
-    allowance = max(1, n // 10)
+    # The .ann index is distributed and hash-pinned, so retrieval is
+    # expected to reproduce exactly. No drift is tolerated.
+    allowance = 0
     note = f"; {len(logit_drift)} with logit drift" if logit_drift else ""
 
     if corrupt:
@@ -643,8 +648,9 @@ def rebuild_fixtures():
     ]
     _quiet_ort()
     sys.path.insert(0, CODE)
-    from retriever import Retriever
-    r = Retriever()
+    import retriever as _R
+    _R.RETRIEVAL_CONFIG["use_epistemic_fusion"] = True   # as main.py does
+    r = _R.Retriever()
     r.load()
     cases = []
     for q in queries:

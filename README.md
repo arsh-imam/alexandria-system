@@ -47,7 +47,7 @@ Install to a directory that does not already contain a copy of the system.
 | G4 | index cardinality and ID-layout integrity | index |
 | G5 | aarch64 CPU_REPACK kernels active | GGUF, aarch64 only |
 | G6 | 41 stored archives by size and ZIM UUID; SHA-256 with `--deep` | corpus |
-| G7 | fixed query set reproduces retrieval exactly | full install |
+| G7 | fixed query set reproduces retrieval exactly, under the shipped configuration | full install |
 | G8 | decode byte-identical at 0.2 / 0.4 / 0.6 | GGUF, aarch64 |
 
 G0 through G3 need no corpus. G0 and G3 read only files in the clone; G1 and G2

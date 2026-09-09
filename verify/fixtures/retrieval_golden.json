@@ -1,6 +1,6 @@
 {
   "k": 3,
-  "generated": "2026-09-04",
+  "generated": "2026-09-09",
   "note": "retrieval has no sampling; only Annoy's approximate neighbours can vary, and only if the .ann was rebuilt",
   "cases": [
     {
@@ -40,35 +40,35 @@
     {
       "query": "what causes the northern lights",
       "titles": [
-        "What? Northern lights are *not* simply caused by energetic charged particles from the sun?",
         "Northern Lights",
-        "Aurora Borealis caused by electrical space tornadoes"
+        "Aurora Borealis caused by electrical space tornadoes",
+        "What? Northern lights are *not* simply caused by energetic charged particles from the sun?"
       ],
       "sources": [
-        "earth science SE (community Q&A)",
         "wikivoyage",
-        "wikinews"
+        "wikinews",
+        "earth science SE (community Q&A)"
       ],
       "logits": [
-        8.2,
         7.47,
-        6.88
+        6.88,
+        8.2
       ],
       "tiers": [
-        2,
         1,
-        1
+        1,
+        2
       ],
       "origins": [
-        "deep:earthscience",
         "bm25",
-        "bm25"
+        "bm25",
+        "deep:earthscience"
       ],
-      "confidence": 1.0,
+      "confidence": 0.999,
       "text_sha256": [
-        "03ec2678bd7b67a8",
         "e322fa6c2ef5dbad",
-        "fc8c8615c72cc0bd"
+        "fc8c8615c72cc0bd",
+        "03ec2678bd7b67a8"
       ]
     },
     {
@@ -109,34 +109,34 @@
       "query": "explain the Krebs cycle",
       "titles": [
         "Citric acid cycle",
-        "Principles of Biochemistry/Krebs cycle or Citric acid cycle",
-        "Structural Biochemistry/Krebs Cycle (Citric Acid cycle)"
+        "Reverse Krebs cycle",
+        "Principles of Biochemistry/Krebs cycle or Citric acid cycle"
       ],
       "sources": [
         "wikipedia",
-        "wikibooks",
+        "wikipedia (deep)",
         "wikibooks"
       ],
       "logits": [
         7.64,
-        7.17,
-        7.11
+        6.45,
+        7.17
       ],
       "tiers": [
         1,
-        1,
+        2,
         1
       ],
       "origins": [
         "bm25",
-        "title",
+        "deep:wikipedia",
         "title"
       ],
       "confidence": 1.0,
       "text_sha256": [
         "5810415aa20cb8a0",
-        "74ec723b9f435beb",
-        "953e870d2ddcce12"
+        "0e800a2447cb7500",
+        "74ec723b9f435beb"
       ]
     },
     {
@@ -178,33 +178,33 @@
       "titles": [
         "How to Restore and Season a Cast Iron Pan",
         "How to Restore and Season a Cast Iron Pan",
-        "Restoring Cast Iron Cookware"
+        "Seasoning (cookware)"
       ],
       "sources": [
         "ifixit",
         "ifixit",
-        "ifixit"
+        "wikipedia (deep)"
       ],
       "logits": [
         9.38,
         9.24,
-        6.67
+        6.26
       ],
       "tiers": [
         1,
         1,
-        1
+        2
       ],
       "origins": [
         "title",
         "title",
-        "bm25"
+        "deep:wikipedia"
       ],
       "confidence": 1.0,
       "text_sha256": [
         "922dfc2a917294ca",
         "71243772b75ce5a5",
-        "5d58dc39a7786f2e"
+        "7ad960454987a951"
       ]
     },
     {
@@ -279,18 +279,18 @@
       "query": "why did the Roman Republic fall",
       "titles": [
         "Roman Republic",
-        "Ancient History/Rome",
-        "Crisis of the Roman Republic"
+        "Crisis of the Roman Republic",
+        "Fall of the Western Roman Empire"
       ],
       "sources": [
         "wikipedia (deep)",
-        "wikibooks",
+        "wikipedia",
         "wikipedia"
       ],
       "logits": [
         7.54,
-        7.53,
-        7.14
+        7.14,
+        6.81
       ],
       "tiers": [
         2,
@@ -300,13 +300,13 @@
       "origins": [
         "deep:wikipedia",
         "bm25",
-        "bm25"
+        "vector"
       ],
       "confidence": 0.999,
       "text_sha256": [
         "ae4b97dd5ddf656f",
-        "922a38b7b438da99",
-        "06118bd4006a0723"
+        "06118bd4006a0723",
+        "44cc2e053878c60c"
       ]
     },
     {
@@ -348,33 +348,33 @@
       "titles": [
         "Read-only memory",
         "A-level Computing 2009/AQA/Computer Components, The Stored Program Concept and the Internet/Machine Level Architecture/Internal and external hardware components of a computer",
-        "A-level Computing/AQA/Computer Components, The Stored Program Concept and the Internet/Machine Level Architecture/Internal and external hardware components of a computer"
+        "Read-only memory"
       ],
       "sources": [
         "wikipedia (deep)",
         "wikibooks",
-        "wikibooks"
+        "wikipedia (deep)"
       ],
       "logits": [
         7.34,
         6.88,
-        6.65
+        5.79
       ],
       "tiers": [
         2,
         1,
-        1
+        2
       ],
       "origins": [
         "deep:wikipedia",
         "bm25",
-        "bm25"
+        "deep:wikipedia"
       ],
       "confidence": 0.999,
       "text_sha256": [
         "7d92a1aa505c9506",
         "e23d8b3d37485740",
-        "d619b09aceefaae8"
+        "8c45c045290a38fd"
       ]
     },
     {
