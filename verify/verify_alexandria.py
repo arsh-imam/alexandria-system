@@ -2,7 +2,7 @@
 """
 ALEXANDRIA verification suite.
 
-Eight gates. Each declares its own prerequisites and SKIPs cleanly when they
+Nine gates, G0-G8. Each declares its own prerequisites and SKIPs cleanly when they
 are absent, so the same script is useful to a reviewer with nothing but a
 clone and to one with the full 96.7 GB deployment.
 
@@ -331,7 +331,7 @@ def g3():
 
 # ---------------------------------------------------------------- G4
 
-@gate("G4", "index integrity (four-way row-index join)", "index artifacts")
+@gate("G4", "index cardinality and ID-layout integrity", "index artifacts")
 def g4():
     import sqlite3
     idx = os.path.join(SSD, "index")
@@ -380,8 +380,12 @@ def g4():
 
 # ---------------------------------------------------------------- G5
 
-@gate("G5", "llama.cpp aarch64 repack kernels", "GGUF + llama-cpp-python")
+@gate("G5", "llama.cpp aarch64 repack kernels", "GGUF, aarch64 only")
 def g5():
+    import platform as _pl
+    if _pl.machine() != "aarch64":
+        raise Skip("CPU_REPACK reference applies only to aarch64; host is %s"
+                   % _pl.machine())
     gguf = os.environ.get("ALEX_GGUF",
                           os.path.join(SSD, "models/Qwen3-1.7B-Q4_K_M.gguf"))
     if not os.path.exists(gguf):
@@ -456,12 +460,22 @@ def g7():
         raise Skip("golden set absent (--rebuild-fixtures on a full system)")
     if not os.path.exists(os.path.join(SSD, "index/passages.ann")):
         raise Skip("index absent")
+    # The deep tier opens only the archives in the registry, not all 41 on
+    # disk. Derive the requirement rather than hard-coding a count.
+    sys.path.insert(0, CODE)
     import glob as _g
-    n_zim = len(_g.glob(os.path.join(SSD, "wikipedia", "*.zim"))) + \
-            len(_g.glob(os.path.join(SSD, "zim_extra", "*.zim")))
-    if n_zim < 41:
-        raise Skip("only %d of 41 archives present; the golden set exercises "
-                   "the deep tier and needs the full corpus" % n_zim)
+    import archive_registry as _ar
+    need = len(_ar.ARCHIVES)
+    # ARCHIVES patterns are absolute to the module's own base path; rebase
+    # them onto SSD so the check honours ALEX_ROOT.
+    def _rebased(pat):
+        i = pat.find("/local_ai/")
+        return os.path.join(SSD, pat[i + len("/local_ai/"):]) if i >= 0 else pat
+    have = sum(1 for spec in _ar.ARCHIVES.values()
+               if _g.glob(_rebased(spec["pat"])))
+    if have < need:
+        raise Skip("%d of %d registered archives present; the golden set "
+                   "exercises the deep tier and needs them all" % (have, need))
 
     _quiet_ort()
     sys.path.insert(0, CODE)
