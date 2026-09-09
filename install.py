@@ -49,7 +49,7 @@ def sha256(path, chunk=1 << 24):
     return h.hexdigest()
 
 
-def preflight(target):
+def preflight(target, downloading=True):
     say(1, "preflight")
     if sys.version_info < (3, 9):
         die(f"Python 3.9+ required, found {platform.python_version()}")
@@ -68,13 +68,10 @@ def preflight(target):
     st = os.statvfs(target)
     free = st.f_bavail * st.f_frsize
     print(f"    free     {free/1e9:.1f} GB at {target}")
-    if free < NEED_BYTES:
+    if downloading and free < NEED_BYTES:
         die(f"need {NEED_BYTES/1e9:.0f} GB free at {target}, found {free/1e9:.1f} GB")
-    try:
-        import huggingface_hub  # noqa: F401
-    except ImportError:
-        die("huggingface_hub missing. Run:\n"
-            "    python3 -m pip install -r manifests/requirements-frozen.txt")
+    if not downloading:
+        print("    (space check skipped: verifying an existing installation)")
 
 
 def install_deps():
@@ -195,9 +192,16 @@ def reassemble(root, rows):
 def expose(root):
     say(6, f"exposing the tree at {MOUNT}")
     src = os.path.dirname(root)
-    if os.path.isdir(os.path.join(MOUNT, "local_ai")):
-        print(f"    {MOUNT}/local_ai already present")
-        return True
+    existing = os.path.join(MOUNT, "local_ai")
+    if os.path.isdir(existing):
+        if os.path.realpath(existing) == os.path.realpath(root):
+            print(f"    {MOUNT}/local_ai is this installation")
+            return True
+        die(f"{existing} exists and is a different installation\n"
+            f"    it resolves to : {os.path.realpath(existing)}\n"
+            f"    this install is: {os.path.realpath(root)}\n"
+            "    Remove or unmount it, or install to the path it occupies.\n"
+            "    The gates would otherwise verify the wrong tree.")
     parent = os.path.dirname(MOUNT)
     try:
         os.makedirs(parent, exist_ok=True)
@@ -221,7 +225,9 @@ def gates():
     if not os.path.exists(v):
         print("    verify/verify_alexandria.py not found; skipping")
         return
-    subprocess.run([sys.executable, v])
+    r = subprocess.run([sys.executable, v])
+    if r.returncode != 0:
+        die("verification gates reported a failure (skips are not failures)")
 
 
 def main():
@@ -236,7 +242,7 @@ def main():
     print(f"  dataset  {REPO}")
     print(f"  target   {target}")
 
-    preflight(target)
+    preflight(target, downloading=not args.verify_only)
     if not args.skip_deps and not args.verify_only:
         install_deps()
     root = (os.path.join(target, "local_ai") if args.verify_only
